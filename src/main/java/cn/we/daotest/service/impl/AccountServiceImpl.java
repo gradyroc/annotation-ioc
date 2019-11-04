@@ -1,8 +1,11 @@
 package cn.we.daotest.service.impl;
 
 
+import cn.we.daotest.dao.IAccountDao;
 import cn.we.daotest.service.IAccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
@@ -38,6 +41,14 @@ import java.util.Date;
 
 用于注入数据的
    bean标签中 <property>标签作用一样
+    @Autowired
+        自动按照类型注入，只要容器中有位移的bean对象类型和要注入的变量类型匹配，就可以注入成功
+                        如果ioc容器中没有任何ban类型和要注入的变量类型匹配，则报错
+                        如果IOC容器中有多个类型可以匹配，则先根据类型，再根据变量名名称和bean的ID匹配
+
+        出现位置：
+            变量、方法上
+         细节：使用注解注入时，set方法就不是必须的了
 
 用于改变作用范围的
     bean标签中 scope属性相同
@@ -45,20 +56,21 @@ import java.util.Date;
     和bean标签中 init-method 和 destory-mehod 作用一样
  */
 
-@Component
-//@Component(value = "accountService")
+
+//@Component
+@Component("accountServiceImpl")
+//@Service
+//@Service(value = "accountService")
 public class AccountServiceImpl implements IAccountService {
 
-
-
-    public AccountServiceImpl() {
-    }
+    @Autowired
+    private IAccountDao accountDao = null;
 
 
     public void saveAccount() {
         //业务层调持久层
 
-        System.out.println("method in service executed name: ");
+        accountDao.saveAccount();
 
     }
 }
