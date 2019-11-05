@@ -1,4 +1,4 @@
-package cn.we.daotest.dao;
+package cn.webank.daotest.dao;
 
 /**
  * @author gradyzhou

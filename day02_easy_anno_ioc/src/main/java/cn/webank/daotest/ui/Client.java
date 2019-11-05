@@ -1,8 +1,7 @@
-package cn.we.daotest.ui;
+package cn.webank.daotest.ui;
 
 
-import cn.we.daotest.dao.IAccountDao;
-import cn.we.daotest.service.IAccountService;
+import cn.webank.daotest.service.IAccountService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
